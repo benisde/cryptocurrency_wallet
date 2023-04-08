@@ -1,9 +1,8 @@
 # Cryptocurrency Wallet
 ################################################################################
 
-# This file contains the Ethereum transaction functions that you have created throughout this module’s lessons.
-# By using import statements, you will integrate this `crypto_wallet.py` Python script
-# into the KryptoJobs2Go interface program that is found in the `krypto_jobs.py` file.
+# This file contains the Ethereum transaction functions.
+# By using import statements, will integrate this `crypto_wallet.py` Python script into the KryptoJobs2Go interface program that is found in the `krypto_jobs.py` file.
 
 ################################################################################
 # Imports
@@ -11,7 +10,7 @@ import os
 import requests
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(r"C:\Users\benis\Documents\Beni\UoT\HW\Unit 19\FinTech_BC_Unit19_HW\cryptocurrency_wallet\ut.env")
 from bip44 import Wallet
 from web3 import Account
 from web3 import middleware
