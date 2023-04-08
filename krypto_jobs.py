@@ -31,7 +31,8 @@ w3 = Web3(Web3.HTTPProvider("HTTP://127.0.0.1:7545"))
 
 # Complete the following steps:
 
-# 1. Review the code contained in the `crypto_wallet.py` script file. Note that the Ethereum transaction functions built - `wallet`, `wallet.derive_acount`, `get_balance`, `fromWei`, `estimateGas`, `sendRawTransaction` have been incorporated into Python functions that allow to automate the process of accessing them.
+# 1. Review the code contained in the `crypto_wallet.py` script file. Note that the Ethereum transaction functions built - `wallet`, `wallet.derive_acount`, 
+# `get_balance`, `fromWei`, `estimateGas`, `sendRawTransaction` have been incorporated into Python functions that allow to automate the process of accessing them.
 
 # 2. Add the mnemonic seed phrase (provided by Ganache) to the starter code’s `ut.env` file.
 
@@ -124,7 +125,8 @@ st.sidebar.markdown("## Client Account Address and Ethernet Balance in Ether")
 
 ##########################################
 # Step 1 - Part 4:
-# Create a variable named `account`. Set this variable equal to a call on the `generate_account` function. This function will create the KryptoJobs2Go # customer’s HD wallet and Ethereum account.
+# Create a variable named `account`. Set this variable equal to a call on the `generate_account` function. This function will create the KryptoJobs2Go 
+# customer’s HD wallet and Ethereum account.
 
 #  Call the `generate_account` function and save it as the variable `account`
 account = generate_account()
@@ -136,7 +138,8 @@ st.sidebar.write(account.address)
 
 ##########################################
 # Step 1 - Part 5:
-# Define a new `st.sidebar.write` function that will display the balance of the customer’s account. Inside this function, call the `get_balance` function and pass the Ethereum `account.address`.
+# Define a new `st.sidebar.write` function that will display the balance of the customer’s account. Inside this function, call the `get_balance` function 
+# and pass the Ethereum `account.address`.
 
 # Call `get_balance` function and pass it the Ganache server address and customer account address
 # Write the returned ether balance to the sidebar
@@ -185,34 +188,42 @@ st.sidebar.markdown("## Total Wage in Ether")
 
 # Complete the following steps:
 
-# 1. KryptoJobs2Go customers will select a fintech professional from the application interface’s drop-down menu, and then input the amount of time for which they’ll hire the worker. 
-# Code the application so that once a customer completes these steps, the application will calculate the amount that the worker will be paid in ether. To do so, complete the following steps:
+# 1. KryptoJobs2Go customers will select a fintech professional from the application interface’s drop-down menu, and then input the amount of time for 
+# which they’ll hire the worker. 
+# Code the application so that once a customer completes these steps, the application will calculate the amount that the worker will be paid in ether. 
+# To do so, complete the following steps:
 
-# * Write the equation that calculates the candidate’s wage. This equation should assess the candidate’s hourly rate from the candidate database (`candidate_database[person][3]`) 
+# * Write the equation that calculates the candidate’s wage. This equation should assess the candidate’s hourly rate from the candidate database 
+# (`candidate_database[person][3]`) 
 # and then multiply this hourly rate by the value of the `hours` variable. Save this calculation’s output as a variable named `wage`.
 
 # * Write the `wage` variable to the Streamlit sidebar by using `st.sidebar.write`.
 
-# 2. Now that the application can calculate a candidate’s wage, write the code that will allow the KryptoJobs2Go as the customer to send an Ethereum blockchain transaction that pays the hired candidate.
+# 2. Now that the application can calculate a candidate’s wage, write the code that will allow the KryptoJobs2Go as the customer to send an Ethereum 
+# blockchain transaction that pays the hired candidate.
 # To accomplish this, locate the code that reads `if st.sidebar.button("Send Transaction")`. 
 # Add logic to this `if` statement that sends the appropriate information to the `send_transaction` function (which is imported from the `crypto_wallet` script file).
 # Inside the `if` statement, add the following functionality:
 
 # * Call the `send_transaction()` function and pass it three parameters:
 # - The Ethereum `account` information. (Remember that this `account` instance was created when the `generate_account` function was called.)
-#  From the `account` instance, the application will be able to access the `account.address` information that is needed to populate the `from` data attribute in the raw transaction.
-# - The `candidate_address` (which will be created and identified in the sidebar when a customer selects a candidate). This will populate the `to` data attribute in the raw transaction.
+#  From the `account` instance, the application will be able to access the `account.address` information that is needed to populate the `from` data attribute 
+# in the raw transaction.
+# - The `candidate_address` (which will be created and identified in the sidebar when a customer selects a candidate). This will populate the `to` data attribute 
+# in the raw transaction.
 # - The `wage` value. This will be passed to the `toWei` function to determine the wei value of the payment in the raw transaction.
 
 # * Save the transaction hash that the `send_transaction` function returns as a variable named `transaction_hash`, and have it display on the application’s web interface.
 
 ##########################################
 # Step 2 - Part 1:
-# * Write the equation that calculates the candidate’s wage. This equation should assess the candidate’s hourly rate from the candidate database (`candidate_database[person][3]`) and 
+# * Write the equation that calculates the candidate’s wage. This equation should assess the candidate’s hourly rate from the candidate database 
+# (`candidate_database[person][3]`) and 
 # then multiply this hourly rate by the value of the `hours` variable. Save this calculation’s output as a variable named `wage`.
 # * Write the `wage` variable to the Streamlit sidebar by using `st.sidebar.write`.
 
-# Calculate total `wage` for the candidate by multiplying the candidate’s hourly rate from the candidate database (`candidate_database[person][3]`) by the value of the `hours` variable 
+# Calculate total `wage` for the candidate by multiplying the candidate’s hourly rate from the candidate database (`candidate_database[person][3]`) by the value of
+# the `hours` variable 
 wage = candidate_database[person][3] * hours
 
 # Write the `wage` calculation to the Streamlit sidebar
@@ -222,8 +233,10 @@ st.sidebar.write(wage)
 # Step 2 - Part 2:
 # * Call the `send_transaction` function and pass it three parameters: 
 # - The Ethereum `account` information. (Remember that this `account` instance was created when the `generate_account` function was called.)
-#  From the `account` instance, the application will be able to access the `account.address` information that is needed to populate the `from` data attribute in the raw transaction.
-# - The `candidate_address` (which will be created and identified in the sidebar when a customer selects a candidate). This will populate the `to` data attribute in the raw transaction.
+#  From the `account` instance, the application will be able to access the `account.address` information that is needed to populate the `from` data attribute 
+#  in the raw transaction.
+# - The `candidate_address` (which will be created and identified in the sidebar when a customer selects a candidate). This will populate the `to` data attribute 
+# in the raw transaction.
 # - The `wage` value. This will be passed to the `toWei` function to determine the wei value of the payment in the raw transaction.
 
 # * Save the transaction hash that the `send_transaction` function returns as a variable named `transaction_hash`, and have it display on the application’s web interface.
